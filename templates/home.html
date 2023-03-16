@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+{%block content%}
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .center {
+            padding: 50px;
+            background: #364154;
+            border-radius: 10px;
+            text-align: center;
+            width: 350px;
+            color:white;
+        }
+    </style>
+    <div class="center">
+        <h5>Common free period calculator</h5>
+        <form method="post">
+        
+        <div class="inputbox">
+            Enter number of students
+            <input type="number" min="2" name="count">
+            <br><br>
+            <button class="btn btn-primary">Enter</button>
+        </div>
+        </form>
+    </div>
+{%endblock%}
