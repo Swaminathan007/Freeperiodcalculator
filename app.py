@@ -1,12 +1,11 @@
 from flask import *
 from WebScraper import Scraper
-import time
 app = Flask(__name__)
 Details,Timetable,Name = [],[],[]
 count = 0
 signedin = False
-s = Scraper()
 countupdated = False
+s = Scraper()
 app.config["SECRET_KEY"] = "1234"
 @app.route("/",methods = ["GET","POST"])
 def home():
@@ -23,13 +22,12 @@ def getdetails(n):
         s.getcaptcha()
     except:
         pass
-    if(not countupdated):
-        if(n > count):
-            return redirect(url_for("Frees"))
+    if(n > count):
+        return redirect(url_for("Frees"))
     if(request.method == "POST"):
-        regno = request.form.get("regnumber")
-        pwd = request.form.get("pwd")
-        captcha = request.form.get("captcha")
+        regno = request.form.get("Regno")
+        pwd = request.form.get("DOB")
+        captcha = request.form.get("Captcha")
         signedin = True
         if(s.login(regno,pwd,captcha)):
             details = s.get_details()
@@ -52,8 +50,8 @@ def Frees():
     days = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
     freehrs = []
     daysandhrs = []
-    for i in range(5):
-        for j in range(8):
+    for i in range(len(days)):
+        for j in range(len(timings)):
             daysandhrs.append([i,j])
     for i in range(len(daysandhrs)):
         c = 0

@@ -1,16 +1,79 @@
-{%extends 'base.html'%}
-{%block content%}
+
 <style>
   body{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    background-color: papayawhip;
+  }
+  label{
+      margin-left:0%;
+  }
+  input{
+      margin: auto;
+      width: 80%;
+      margin-left: 10%;
+  }
+  .header{
+      text-align: center;
+      margin: auto;
+  }
+  .form{
+      background-color: grey;
+      margin: auto;
+      padding: 2rem;
+      width: 50%;
+
+  }
+
+  .image{
+      background-color: white;
+      width: 6rem;
+      height: 2.5rem;
+      margin: auto;
+      
+  }
+  button{
+    margin-left: 25%;
+  }
+
+  ul{
+      margin: 0%;
+      display: inline-block;
+      padding: 0%;
+      background-color: black;
+      width: 100%;
+      text-align: right;
+  }
+  li{
+      list-style: none;
+      display: inline-block;
+      padding:0.5rem;
+  }
+  a{
+      text-decoration: none;
+      color: rgba(0, 255, 255, 0.684);
+  }
+  a:hover,a:focus{
+      color: aqua;
+  }
+  a:visited{
+      color: aqua;
+  }
+  @media(max-width:650px){
+      .form{
+          width:70%;
+      }
+  }
+  [type=submit]{
+      background-color:rgb(117, 36, 36);
+      border-radius: 30px;
+      transition-duration: 0.5s;
+      height: 20px;
+      width: 100px;
+      margin: auto;
+  }
+  [type=submit]:hover{
+      color:white
+  }
 </style>
-   <body>
       <div class="container" style="padding: 10px;">
         {%for message in get_flashed_messages()%}
           <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -21,42 +84,53 @@
           </div>
         {%endfor%}
       </div>
-      <section class="vh-100 gradient-custom">
-         <div class="container py-5 h-100">
-           <div class="row d-flex justify-content-center align-items-center h-100">
-             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-               <div class="card bg-dark text-white" style="height:500px;border-radius:10px ;">
+      <header class="header">
+        <ul>
+            <li> <a href="">PWI</a></li>
+            <li><a href="">SWI</a></li>
+            <li><a href="">Sastra home</a></li>
+        </ul>
+        <h1>Free period calculator</h1>
+        <p>Enter the details of student-{{number}}</p>
 
-                 <div class="card-body p-5 text-center">
-                  <h5>Free period calculator</h5>
-                    <p>Enter details of student-{{number}}</p>
-                     <p class="text-white-50 mb-5">Enter your Register number and Date of birth!</p>
-                  <div class="mb-md-5 mt-md-4 pb-5">
-                     <form method = "POST">
-                        <div class="form-group">
-                
-                          <input placeholder="Register no." type="text" class="form-control" name = "regnumber" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px;">
-                        </div>
-                        <div class="form-group">
-                    
-                          <input type="password" class="form-control" name = "pwd"  id="exampleInputPassword1" placeholder="ddmmyyyy" style="height: 30px;">
-                        </div>
-                        <div class="form-group">
-                  
-                          <input placeholder = "captcha" type="text" class="form-control" id = "captcha" name = "captcha" placeholder="Enter captcha" style="height: 30px;">
-                          <br>
-                          <img src="{{url_for('static',filename = 'captcha1.png')}}" alt="Nothing">
-                
-                          
-                        </div>
-                        <button type="submit" class="btn btn-outline-primary" style="height:40px;">Submit</button>
-                     </form>
-                  </div>
-               </div>
-            </div>
-         </div>
-         </div>
-         </div>
-   </section>
+    </header>
+    <main>
+
+        <div class="form">
+            <form method="post">
+                <div>
+                    <label for="Regno">Enter regno:</label>
+                    <br>
+                    <input
+                        type="text"
+                        name="Regno"
+                    >
+
+                </div>
+                <br>
+                <div>
+                  <label for="DOB">Enter DOB:</label>
+                    <br>
+                    <input
+                        type="password"
+                        name="DOB"
+                    >
+                </div>
+                <br>
+                <div>
+                    <label for="Captcha">Enter Captcha:</label>
+                    <br>
+                    <input
+                        type="text"
+                        name="Captcha"
+                    >
+                </div>
+                <br>
+                <div class="image">
+                    <img class="image" src="{{url_for('static',filename = 'captcha1.png')}}" alt="Nothing">
+              <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
    </body>
-{%endblock%}
