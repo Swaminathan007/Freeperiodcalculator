@@ -9,7 +9,7 @@ op = Options()
 op.headless = True
 class Scraper:
     def __init__(self):
-        self.path = "C:\Program Files (x86)\chromedriver.exe"
+        self.path = "chromedrivers\chromedriver.exe"
         self.driver = webdriver.Chrome(self.path,options = op)
         self.main_link = "https://webstream.sastra.edu/sastraparentweb/"
         self.driver.get(self.main_link)
